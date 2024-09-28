@@ -1,5 +1,6 @@
-# rust-new-project-template
-A good starting point for a new Rust project
+# [[Coursera] Data Engineering with Rust](https://www.coursera.org/learn/data-engineering-rust/)
+
+This course is part of [Rust Programming Specialization](https://www.coursera.org/specializations/rust-programming)
 
 ## References
 
