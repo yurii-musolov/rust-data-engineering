@@ -1,0 +1,20 @@
+{
+  "ESPN": [
+    "NFL",
+    "NBA"
+  ],
+  "NFL": [
+    "ESPN"
+  ],
+  "NBA": [
+    "ESPN",
+    "UFC"
+  ],
+  "UFC": [
+    "ESPN"
+  ],
+  "MLB": [
+    "ESPN",
+    "NFL"
+  ]
+}
