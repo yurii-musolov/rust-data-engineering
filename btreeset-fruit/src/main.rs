@@ -47,7 +47,7 @@ fn main() {
 }
 
 fn random_fruits(amount: usize) -> BTreeSet<&'static str> {
-    let amount = amount.clamp(0, FRUITS.len());
+    let amount = amount.clamp(0, FRUITS.len() + 1);
     let mut rng = thread_rng();
 
     let mut fruit_set = BTreeSet::new();

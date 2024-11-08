@@ -53,7 +53,7 @@ fn main() {
     // To track fruit generation statistics.
     let mut unique_fruit = HashMap::new();
     for fruit in fruit.into_iter() {
-        *unique_fruit.entry(fruit).or_insert(1) += 1;
+        *unique_fruit.entry(fruit).or_insert(0) += 1;
     }
     println!("Number of unique fruits generated: {}", unique_fruit.len());
 }

@@ -10,8 +10,6 @@ use cli_salad::{create_fruit_salad, FRUITS};
 struct Opts {
     #[clap(short, long)]
     number: usize,
-    // #[clap(short, long, value_delimiter(','), required(false))]
-    // number: usize,
 }
 
 fn main() {
