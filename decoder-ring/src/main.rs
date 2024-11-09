@@ -49,7 +49,10 @@ use decoder_ring::print_stats_analysis;
 struct Args {
     /// The message to decrypt
     #[arg(short, long)]
-    message: String,
+    message: Option<String>,
+
+    #[clap(long)]
+    file: Option<String>,
 
     //statistical information about the message
     #[arg(short, long)]
@@ -63,17 +66,22 @@ struct Args {
 // run it
 fn main() {
     let args = Args::parse();
+    let message = args.message.unwrap_or_else(|| match args.file {
+        Some(filename) => std::fs::read_to_string(filename).expect("Could not read file"),
+        None => panic!("Expected one of the arguments '--file' or '--message'"),
+    });
+
     //stats
     if args.stats {
-        print_stats_analysis(&args.message);
+        print_stats_analysis(&message);
     }
     //guess
     if args.guess {
-        let (depth, best_shift, decrypted, max_score) = decoder_ring::guess_shift(&args.message, 26);
+        let (depth, best_shift, decrypted, max_score) = decoder_ring::guess_shift(&message, 26);
         println!(
             "Best shift: {} (out of {}), score: {}",
             best_shift, depth, max_score
         );
-        println!("Decrypted message: {}", decrypted);        
+        println!("Decrypted message: {}", decrypted);
     }
 }
