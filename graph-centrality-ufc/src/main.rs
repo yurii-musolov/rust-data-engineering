@@ -34,6 +34,7 @@ fn main() {
         Fighter::new("Jose Aldo"),
         Fighter::new("Conor McGregor"),
         Fighter::new("Nate Diaz"),
+        Fighter::new("Bruce Lee"),
     ];
 
     let fighter_nodes: Vec<NodeIndex> = fighters
@@ -48,6 +49,9 @@ fn main() {
     add_edge(&mut graph, &fighter_nodes, 3, 4); // Conor McGregor vs. Nate Diaz
     add_edge(&mut graph, &fighter_nodes, 0, 4); // Dustin Poirier vs. Nate Diaz
     add_edge(&mut graph, &fighter_nodes, 2, 4); // Jose Aldo vs. Nate Diaz
+    add_edge(&mut graph, &fighter_nodes, 5, 0); // Bruce Lee vs. Dustin Poirier
+    add_edge(&mut graph, &fighter_nodes, 5, 3); // Bruce Lee vs. Conor McGregor
+    add_edge(&mut graph, &fighter_nodes, 5, 4); // Bruce Lee vs. Nate Diaz
 
     for (i, &node) in fighter_nodes.iter().enumerate() {
         let name = &fighters[i].name;
@@ -61,7 +65,7 @@ fn main() {
                 "{} has the lowest centrality because he has fought with all other fighters in the network. In this context, a lower centrality value means a higher number of fights.",
                 name
             ),
-            "Dustin Poirier" | "Nate Diaz" => println!(
+            "Dustin Poirier" | "Nate Diaz" | "Bruce Lee" => println!(
                 "{} has a centrality of {:.2}, implying they had less fights compared to Conor McGregor but more than Khabib Nurmagomedov and Jose Aldo.",
                 name, closeness
             ),
@@ -71,5 +75,6 @@ fn main() {
             ),
             _ => {}
         }
+        println!("-----------------");
     }
 }
